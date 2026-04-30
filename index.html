@@ -82,14 +82,14 @@
 <div class="wrap">
     <div class="card">
         <h1>Abschluss Party 💸</h1>
-        <div class="small">wir sammeln bisschen Geld für die Party (bitte kein Stress 😄)</div>
+        <div class="small">wir sammeln Geld für Abschlussparty </div>
 
         <div class="sum" id="summe">Gesammelt: 0 €</div>
 
         <input type="number" id="betrag" placeholder="wie viel €?">
         <br>
 
-        <button onclick="addMoney()">dazu packen</button>
+        <button onclick="addMoney()">einzahlen/button>
         <button onclick="resetAll()">reset</button>
 
         <div class="note">*ja das ist nur ein kleiner Schul-Ding</div>
@@ -136,16 +136,16 @@
     // 🎉 ridiculous confetti explosion
     function megaConfetti() {
 
-        let duration = 2500;
+        let duration = 25000;
         let end = Date.now() + duration;
 
         (function frame() {
             confetti({
-                particleCount: 6,
-                spread: 120,
-                startVelocity: 45,
+                particleCount: 60,
+                spread: 1200,
+                startVelocity: 405,
                 gravity: 0.8,
-                ticks: 200
+                ticks: 300
             });
 
             if (Date.now() < end) {
