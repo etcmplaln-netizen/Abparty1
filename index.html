@@ -82,7 +82,7 @@
 
     <!-- ГЛАВНАЯ -->
     <div class="card" id="mainPage">
-        <h1>Abschluss Party 💸</h1>
+        <h1>Abschluss Party</h1>
         <div class="small">wir sammeln Geld für Abschlussparty</div>
 
         <div class="sum" id="summe">Gesammelt: 0 €</div>
@@ -92,8 +92,6 @@
 
         <button onclick="addMoney()">einzahlen</button>
         <button onclick="resetAll()">reset</button>
-        <br>
-        <button onclick="showInfo()">Info</button>
     </div>
 
     <!-- ИНФО -->
@@ -101,10 +99,10 @@
         <h1>Party Infos</h1>
 
         <div class="small">
-            Zeit: 19.06.2026 um 17:30 Uhr<br><br>
+            Zeit: 19.06.2026 um 19:00 Uhr<br><br>
             Ort: Albtraaum Herold Center Norderstedt<br><br>
-            weiter infos können sie bei:<br>
-            Robin & Linnea finden
+            Weitere Infos bei:<br>
+            Robin & Linnea
         </div>
 
         <button onclick="showMain()">zurück</button>
@@ -133,6 +131,11 @@
         document.getElementById("betrag").value = "";
 
         megaConfetti();
+
+        // 👉 ПОКАЗАТЬ ИНФО ПОСЛЕ ОПЛАТЫ
+        setTimeout(() => {
+            showInfo();
+        }, 1200); // небольшая задержка для эффекта
     }
 
     function update() {
