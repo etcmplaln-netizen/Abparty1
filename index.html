@@ -82,17 +82,16 @@
 <div class="wrap">
     <div class="card">
         <h1>Abschluss Party 💸</h1>
-        <div class="small">wir sammeln Geld für Abschlussparty </div>
+        <div class="small">wir sammeln Geld für Abschlussparty</div>
 
         <div class="sum" id="summe">Gesammelt: 0 €</div>
 
         <input type="number" id="betrag" placeholder="wie viel €?">
         <br>
 
-        <button onclick="addMoney()">einzahlen/button>
+        <button onclick="addMoney()">einzahlen</button>
         <button onclick="resetAll()">reset</button>
 
-        <div class="note">*ja das ist nur ein kleiner Schul-Ding</div>
     </div>
 </div>
 
@@ -116,7 +115,6 @@
         update();
         document.getElementById("betrag").value = "";
 
-        // 💥 BIG CONFETTI CHAOS MODE
         megaConfetti();
     }
 
@@ -133,19 +131,27 @@
         }
     }
 
-    // 🎉 ridiculous confetti explosion
+    // 💥 ULTRA MEGA CONFETTI MODE
     function megaConfetti() {
 
-        let duration = 25000;
+        let duration = 6000;
         let end = Date.now() + duration;
 
+        // continuous explosion
         (function frame() {
             confetti({
-                particleCount: 60,
-                spread: 1200,
-                startVelocity: 405,
-                gravity: 0.8,
-                ticks: 300
+                particleCount: 10,
+                spread: 180,
+                startVelocity: 50,
+                gravity: 0.9,
+                ticks: 300,
+                scalar: 1.2
+            });
+
+            confetti({
+                particleCount: 6,
+                spread: 360,
+                startVelocity: 35
             });
 
             if (Date.now() < end) {
@@ -153,18 +159,25 @@
             }
         })();
 
-        // extra bursts
+        // massive bursts
         setTimeout(() => {
-            confetti({ particleCount: 200, spread: 160 });
-        }, 200);
+            confetti({ particleCount: 250, spread: 200 });
+            confetti({ particleCount: 250, spread: 200 });
+        }, 300);
 
         setTimeout(() => {
-            confetti({ particleCount: 300, spread: 200 });
-        }, 600);
+            confetti({ particleCount: 400, spread: 240 });
+            confetti({ particleCount: 400, spread: 240 });
+        }, 900);
 
         setTimeout(() => {
-            confetti({ particleCount: 400, spread: 360 });
-        }, 1000);
+            confetti({ particleCount: 600, spread: 360 });
+            confetti({ particleCount: 600, spread: 360 });
+        }, 1500);
+
+        setTimeout(() => {
+            confetti({ particleCount: 800, spread: 360 });
+        }, 2200);
     }
 </script>
 
