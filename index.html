@@ -35,6 +35,7 @@
             opacity: 0.7;
             font-size: 13px;
             margin-bottom: 20px;
+            line-height: 1.5;
         }
 
         input {
@@ -67,10 +68,8 @@
             font-weight: bold;
         }
 
-        .note {
-            font-size: 12px;
-            opacity: 0.5;
-            margin-top: 10px;
+        .hidden {
+            display: none;
         }
     </style>
 </head>
@@ -80,7 +79,9 @@
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 <div class="wrap">
-    <div class="card">
+
+    <!-- ГЛАВНАЯ -->
+    <div class="card" id="mainPage">
         <h1>Abschluss Party 💸</h1>
         <div class="small">wir sammeln Geld für Abschlussparty</div>
 
@@ -91,8 +92,24 @@
 
         <button onclick="addMoney()">einzahlen</button>
         <button onclick="resetAll()">reset</button>
-
+        <br>
+        <button onclick="showInfo()">Info</button>
     </div>
+
+    <!-- ИНФО -->
+    <div class="card hidden" id="infoPage">
+        <h1>📍 Party Infos</h1>
+
+        <div class="small">
+            ⏰ Zeit: 19.06.2026 um 17:30 Uhr<br><br>
+            📍 Ort: Albtraaum Herold Center Norderstedt<br><br>
+            👥 Organisatoren:<br>
+            Robin & Linnea
+        </div>
+
+        <button onclick="showMain()">zurück</button>
+    </div>
+
 </div>
 
 <script>
@@ -131,13 +148,21 @@
         }
     }
 
-    // 💥 ULTRA MEGA CONFETTI MODE
+    function showInfo() {
+        document.getElementById("mainPage").classList.add("hidden");
+        document.getElementById("infoPage").classList.remove("hidden");
+    }
+
+    function showMain() {
+        document.getElementById("infoPage").classList.add("hidden");
+        document.getElementById("mainPage").classList.remove("hidden");
+    }
+
     function megaConfetti() {
 
         let duration = 6000;
         let end = Date.now() + duration;
 
-        // continuous explosion
         (function frame() {
             confetti({
                 particleCount: 10,
@@ -159,7 +184,6 @@
             }
         })();
 
-        // massive bursts
         setTimeout(() => {
             confetti({ particleCount: 250, spread: 200 });
             confetti({ particleCount: 250, spread: 200 });
