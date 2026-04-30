@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>Abschluss Party 💸</title>
+    <title>Abschluss Party </title>
 
     <style>
         body {
@@ -116,6 +116,13 @@
 
     update();
 
+    // ENTER КНОПКА
+    document.getElementById("betrag").addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            addMoney();
+        }
+    });
+
     function addMoney() {
         let v = parseFloat(document.getElementById("betrag").value);
 
@@ -132,10 +139,9 @@
 
         megaConfetti();
 
-        // 👉 ПОКАЗАТЬ ИНФО ПОСЛЕ ОПЛАТЫ
         setTimeout(() => {
             showInfo();
-        }, 1200); // небольшая задержка для эффекта
+        }, 1200);
     }
 
     function update() {
