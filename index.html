@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Abschlussparty Spenden</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #6dd5ed, #2193b0);
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            margin-top: 80px;
+        }
+
+        .box {
+            background: white;
+            color: #333;
+            padding: 30px;
+            border-radius: 15px;
+            width: 320px;
+            margin: auto;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        input {
+            padding: 10px;
+            width: 80%;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 12px 20px;
+            font-size: 16px;
+            background: #2193b0;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #17687d;
+        }
+
+        .sum {
+            font-size: 24px;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="box">
+        <h1>🎉 Abschlussparty 🎉</h1>
+        <p>Wir sammeln Geld für unsere Abschlussparty!</p>
+        <p>Jeder Beitrag hilft 🙌</p>
+
+        <div class="sum" id="summe">Gesammelt: 0 €</div>
+
+        <input type="number" id="betrag" placeholder="Betrag in €">
+        <br>
+        <button onclick="addDonation()">Spenden hinzufügen</button>
+        <button onclick="resetSum()">Zurücksetzen</button>
+    </div>
+</div>
+
+<script>
+    let total = localStorage.getItem("spendenSumme");
+
+    if (!total) {
+        total = 0;
+    } else {
+        total = parseFloat(total);
+    }
+
+    updateDisplay();
+
+    function addDonation() {
+        let value = parseFloat(document.getElementById("betrag").value);
+
+        if (!value || value <= 0) {
+            alert("Bitte einen gültigen Betrag eingeben!");
+            return;
+        }
+
+        total += value;
+        localStorage.setItem("spendenSumme", total);
+
+        updateDisplay();
+        document.getElementById("betrag").value = "";
+    }
+
+    function updateDisplay() {
+        document.getElementById("summe").innerText = "Gesammelt: " + total.toFixed(2) + " €";
+    }
+
+    function resetSum() {
+        if (confirm("Willst du den Betrag wirklich zurücksetzen?")) {
+            total = 0;
+            localStorage.setItem("spendenSumme", total);
+            updateDisplay();
+        }
+    }
+</script>
+
+</body>
+</html>
